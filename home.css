@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&family=Rubik+Mono+One&display=swap');
+
+h1 {
+    font-family: 'Rubik Mono One', sans-serif;
+}
+p {
+    font-family: 'Karla', sans-serif;
+}
+.carousel-caption {
+    top: 50%;
+    transform: translateY(-50%);
+}
+.carousel-caption h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.carousel-caption p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+.carousel-caption button {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+}
+.carousel-item img {
+    object-fit: cover;
+    height: 90vh;
+}
+.carousel-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    z-index: 0;
+}
