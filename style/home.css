@@ -40,9 +40,6 @@ p {
 }
 .services {
     height: auto;
-    padding: 40px 50px;
+    padding: 65px 50px;
     background-color: #e3f2fd;;
-}
-.services h1 {
-    margin-bottom: 20px;
 }

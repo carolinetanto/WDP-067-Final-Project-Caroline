@@ -19,7 +19,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('IMG_1460.JPG');
+    background-image: url('/media/IMG_1460.JPG');
     background-size: cover;
     filter: blur(8px);
 }
@@ -49,8 +49,18 @@ p {
     padding: 120px 0px;
 }
 .portfolio .col {
+    margin-bottom: 30px;
+}
+.image-container {
     position: relative;
     display: inline-block;
+}
+.image-container img {
+    display: block;
+    height: auto;
+    width: 350px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .overlay {
     position: absolute;
@@ -58,42 +68,35 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
     opacity: 0;
-    background-color: rgba(0, 0, 0, 0.8);
     transition: opacity 0.3s;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 1;
 }
-.text {
+.overlay:hover {
+    opacity: 1;
+}
+.overlay p {
     color: #fff;
     font-size: 18px;
-    font-weight: 700;
-    font-family: 'Karla', sans-serif;
     margin-bottom: 10px;
 }
-.love-button {
+.like-button {
     background-color: transparent;
-    color: white;
     border: none;
+    color: #fff;
+    font-size: 16px;
     cursor: pointer;
-    margin-bottom: 10px;
+}
+.like-button.red {
+    color: red;
 }
 .like-counter {
     color: #fff;
-    font-size: 15px;
-  }
-.portfolio .col:hover .overlay {
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-.portfolio .row .col img {
-    height: auto;
-    width: 350px;
-    border-radius: 5px;
-    margin-bottom: 30px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    z-index: 0;
+    font-size: 16px;
+    margin-top: 10px;
 }
