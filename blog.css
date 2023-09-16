@@ -19,7 +19,6 @@ p {
     padding: 5px 10px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    margin-bottom: 10px;
 }
 .blog .title .search button {
     border-radius: 20px;
@@ -32,16 +31,4 @@ p {
 }
 .blog .highlight-blog .row {
     margin-bottom: 20px;
-}
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-}
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
