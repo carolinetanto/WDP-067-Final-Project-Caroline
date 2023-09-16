@@ -62,3 +62,29 @@ p {
 .contact .contact-details i {
     margin-right: 10px;
 }
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0px 0px 55px;
+    
+}
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0px 0px 55px;
+    
+}
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}

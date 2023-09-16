@@ -78,3 +78,16 @@ p {
     padding: 65px 50px;
     background-color: #e3f2fd;;
 }
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0px 0px 55px;
+    
+}
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
