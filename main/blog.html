@@ -45,7 +45,7 @@
           <button class="btn btn-dark" id="search-button"><i class="fa fa-search"></i>Search</button>
         </div>
       </div>
-      <div class="highlight-blog text-left">
+      <div class="highlight-blog text-left" id="blog-list">
         <div class="row row-cols-1 row-cols-md-2 g-3">
           <div class="col">
             <div class="card h-100">
@@ -65,11 +65,74 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-4 g-2">
+          <div class="col">
+            <div class="card h-100">
+              <img src="/media/IMG_1456.JPG" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="/media/IMG_1460.JPG" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a short card.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="/media/IMG_1463.JPG" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a short card.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="/media/IMG_1456.JPG" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">not</h5>
+                <p class="card-text">This is a short card.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="grid-blog"></div>
     </div>
+    <script>
+      document.getElementById("search-button").addEventListener("click", function() {
+        performSearch();
+      });
+
+      document.getElementById("search-input").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+          performSearch();
+        }
+      });
+
+      function performSearch() {
+        const searchQuery = document.getElementById("search-input").value.toLowerCase();
+        const blogItems = document.querySelectorAll("#blog-list .col .card-body");
+
+        blogItems.forEach(function(item) {
+          const title = item.querySelector("h5").textContent.toLowerCase();
+          const content = item.querySelector("p").textContent.toLowerCase();
+
+          if (title.includes(searchQuery) || content.includes(searchQuery)) {
+            item.classList.remove("hidden");
+          } else {
+            item.classList.add("hidden");
+          }
+        });
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>

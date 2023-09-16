@@ -1,65 +1,97 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Popper Tutorial</title>
-    <style>
-      #search-input {
-        width: 200px;
-        padding: 5px;
-        margin-bottom: 10px;
-      }
+<head>
+  <title>Todo App</title>
+  <style>
+    .done {
+      text-decoration: line-through;
+    }
 
-      #blog-list li {
-        margin-bottom: 15px;
-      }
+    li {
+      list-style-type: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
 
-      #blog-list h3 {
-        font-size: 18px;
-        margin-bottom: 5px;
-      }
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Todo App</h1>
+  <input type="text" id="todoInput" placeholder="Add a new todo">
+  <button id="addButton">Add</button>
+  <ul id="todoList"></ul>
 
-      #blog-list p {
-        font-size: 14px;
-        color: #888;
-      }
+  <script>
+    // Retrieve todo items from local storage
+    let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-      .hidden {
-        display: none;
-      }
-    </style>
-  </head>
-  <body>
-    <input type="text" id="search-input" placeholder="Search...">
-    <ul id="blog-list">
-      <li>
-        <h3>Blog Post 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </li>
-      <li>
-        <h3>Blog Post 2</h3>
-        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </li>
-      <li>
-        <h3>Blog Post 3</h3>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-      </li>
-    </ul>
-    <script>
-      document.getElementById("search-input").addEventListener("input", function() {
-        const searchQuery = this.value.toLowerCase();
-        const blogItems = document.querySelectorAll("#blog-list li");
+    // Function to save todo items to local storage
+    function saveTodos() {
+      localStorage.setItem('todos', JSON.stringify(todos));
+    }
 
-        blogItems.forEach(function(item) {
-          const title = item.querySelector("h3").textContent.toLowerCase();
-          const content = item.querySelector("p").textContent.toLowerCase();
+    // Function to render the todo list
+    function renderTodoList() {
+      const todoList = document.getElementById('todoList');
+      todoList.innerHTML = '';
 
-          if (title.includes(searchQuery) || content.includes(searchQuery)) {
-            item.classList.remove("hidden");
-          } else {
-            item.classList.add("hidden");
-          }
+      todos.forEach((todo, index) => {
+        const listItem = document.createElement('li');
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = todo.done;
+        checkbox.addEventListener('change', () => {
+          todo.done = checkbox.checked;
+          saveTodos();
+          renderTodoList();
         });
+
+        const label = document.createElement('label');
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(todo.text));
+        if (todo.done) {
+          label.classList.add('done');
+        }
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', () => {
+          todos.splice(index, 1);
+          saveTodos();
+          renderTodoList();
+        });
+
+        listItem.appendChild(label);
+        listItem.appendChild(deleteButton);
+        todoList.appendChild(listItem);
       });
-    </script>
-  </body>
+    }
+
+    // Function to add a new todo item
+    function addTodo() {
+      const todoInput = document.getElementById('todoInput');
+      const todoText = todoInput.value.trim();
+
+      if (todoText !== '') {
+        todos.push({ text: todoText, done: false });
+        saveTodos();
+        renderTodoList();
+        todoInput.value = '';
+      }
+    }
+
+    // Event listener for the add button
+    const addButton = document.getElementById('addButton');
+    addButton.addEventListener('click', addTodo);
+
+    // Initial rendering of the todo list
+    renderTodoList();
+  </script>
+</body>
 </html>

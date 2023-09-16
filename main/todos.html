@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caroline</title>
+    <link rel="stylesheet" href="/style/todos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Caroline</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/main/home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/main/about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/main/portfolio.html">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/main/blog.html">Blog</a>
+              </li>
+                <a class="nav-link" href="/main/contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <a href="/main/todos.html" class="d-flex btn btn-outline-primary active">Todos</a>
+        </div>
+    </nav>
+    <div class="todos text-center">
+        <h1>Things you need to do...</h1>
+        <input type="text" id="todoInput" placeholder="Add a new todo">
+        <button class="btn btn-primary" id="addButton">Add</button>
+        <ul id="todoList"></ul>
+    </div>
+    <script>
+        // Retrieve todo items from local storage
+        let todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+        // Function to save todo items to local storage
+        function saveTodos() {
+            localStorage.setItem('todos', JSON.stringify(todos));
+        }
+
+        // Function to render the todo list
+        function renderTodoList() {
+            const todoList = document.getElementById('todoList');
+            todoList.innerHTML = '';
+
+        todos.forEach((todo, index) => {
+            const listItem = document.createElement('li');
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = todo.done;
+            checkbox.addEventListener('change', () => {
+                todo.done = checkbox.checked;
+                saveTodos();
+                renderTodoList();
+            });
+
+            const label = document.createElement('label');
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(todo.text));
+            if (todo.done) {
+                label.classList.add('done');
+            }
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', () => {
+                todos.splice(index, 1);
+                saveTodos();
+                renderTodoList();
+            });
+
+            listItem.appendChild(label);
+            listItem.appendChild(deleteButton);
+            todoList.appendChild(listItem);
+        });
+        }
+
+        // Function to add a new todo item
+        function addTodo() {
+            const todoInput = document.getElementById('todoInput');
+            const todoText = todoInput.value.trim();
+
+            if (todoText !== '') {
+                todos.push({ text: todoText, done: false });
+                saveTodos();
+                renderTodoList();
+                todoInput.value = '';
+            }
+        }
+
+        // Event listener for the add button
+        const addButton = document.getElementById('addButton');
+        addButton.addEventListener('click', addTodo);
+
+        // Initial rendering of the todo list
+        renderTodoList();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

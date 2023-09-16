@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&family=Rubik+Mono+One&display=swap');
+
+h1 {
+    font-family: 'Rubik Mono One', sans-serif;
+}
+p {
+    font-family: 'Karla', sans-serif;
+}
+.title-section {
+    position: relative;
+    height: 90vh;
+}
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/media/IMG_1463.JPG');
+    background-size: cover;
+    filter: blur(8px);
+}
+.section-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: #fff;
+}
+.section-caption h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.section-caption p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+.contact {
+    background-color: #e3f2fd;
+    height: 90vh;
+    padding: 200px 50px;
+}
+.contact .newsletter-box form input {
+    border-radius: 30px;
+    width: 300px;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 10px;
+}
+.contact .newsletter-box form button {
+    background-color: black;
+    color: white;
+    border-radius: 30px;
+    border: none;
+    padding: 5px 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.contact .contact-details i {
+    margin-right: 10px;
+}

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla&family=Rubik+Mono+One&display=swap');
 
 .blog {
-    background-color: #e3f2fd;;
+    background-color: #e3f2fd;
     padding: 50px;
 }
 h1 {
@@ -24,7 +24,11 @@ p {
     border-radius: 20px;
     padding: 5px 10px;
     border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .blog .title .search button i {
     margin-right: 8px;
+}
+.blog .highlight-blog .row {
+    margin-bottom: 20px;
 }

@@ -41,10 +41,10 @@
       <div class="section-caption">
         <h1>Portfolio</h1>
         <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
-        <button class="btn btn-primary" data-bs-toggle="scroll" id="introductionButton"><b>Get to know about us!</b></button>
+        <button class="btn btn-primary" data-bs-toggle="scroll" id="projectButton"><b>See our projects!</b></button>
       </div>
     </div>
-    <div class="portfolio container text-center">
+    <div class="portfolio container text-center" id="project">
       <div class="row align-items-center">
         <div class="col">
           <div class="image-container">
@@ -167,5 +167,11 @@
         });
       });
     </Script>
+    <script>
+      document.getElementById("projectButton").addEventListener("click", function(){
+        var targetElement = document.getElementById("project");
+        targetElement.scrollIntoView({behavior: "smooth"});
+      })
+    </script>
 </body>
 </html>
